@@ -2,10 +2,12 @@ package shu.jee.grandgallery.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
+import shu.jee.grandgallery.request.UserLoginReq;
 import shu.jee.grandgallery.response.Response;
 import shu.jee.grandgallery.service.UserService;
 
@@ -25,9 +27,8 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("/login")
-    Response login(Integer userId,String password) {
-        if (userService.checkPassword(userId,password)) {
-            System.out.println(Response.success((null)));
+    Response login(@RequestBody UserLoginReq req) {
+        if (userService.checkPassword(req.getUserId(), req.getPassword())) {
             return Response.success(null);
         }
         else {
