@@ -1,4 +1,4 @@
-package shu.jee.grandgallery.entity;
+package shu.jee.grandgallery.entity.data;
 
 import java.io.Serializable;
 

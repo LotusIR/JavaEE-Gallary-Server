@@ -1,6 +1,6 @@
 package shu.jee.grandgallery.service.impl;
 
-import shu.jee.grandgallery.entity.Category;
+import shu.jee.grandgallery.entity.data.Category;
 import shu.jee.grandgallery.mapper.TCategoryMapper;
 import shu.jee.grandgallery.service.CategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

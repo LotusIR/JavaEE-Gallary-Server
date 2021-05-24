@@ -1,6 +1,6 @@
 package shu.jee.grandgallery.service;
 
-import shu.jee.grandgallery.entity.Tags;
+import shu.jee.grandgallery.entity.data.Tags;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

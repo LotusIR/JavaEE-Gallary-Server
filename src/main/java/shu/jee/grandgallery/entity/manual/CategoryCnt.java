@@ -1,4 +1,4 @@
-package shu.jee.grandgallery.entity;
+package shu.jee.grandgallery.entity.manual;
 
 public class CategoryCnt {
     private String categoryName;

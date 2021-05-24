@@ -1,7 +1,8 @@
 package shu.jee.grandgallery.service;
 
-import shu.jee.grandgallery.entity.Picture;
+import shu.jee.grandgallery.entity.data.Picture;
 import com.baomidou.mybatisplus.extension.service.IService;
+import shu.jee.grandgallery.entity.data.PictureInfo;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface PictureService extends IService<Picture> {
 
+    PictureInfo getInformation(Integer pictureId);
 }

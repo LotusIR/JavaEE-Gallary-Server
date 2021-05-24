@@ -1,7 +1,7 @@
 package shu.jee.grandgallery.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import shu.jee.grandgallery.entity.User;
+import shu.jee.grandgallery.entity.data.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

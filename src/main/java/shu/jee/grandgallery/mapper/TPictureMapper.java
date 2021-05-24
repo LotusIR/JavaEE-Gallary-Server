@@ -1,8 +1,10 @@
 package shu.jee.grandgallery.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import shu.jee.grandgallery.entity.Picture;
+import org.springframework.beans.factory.annotation.Autowired;
+import shu.jee.grandgallery.entity.data.Picture;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import shu.jee.grandgallery.entity.data.PictureInfo;
 
 /**
  * <p>
@@ -15,4 +17,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 @Mapper
 public interface TPictureMapper extends BaseMapper<Picture> {
 
+    PictureInfo getInfo(Integer pictureId);
 }

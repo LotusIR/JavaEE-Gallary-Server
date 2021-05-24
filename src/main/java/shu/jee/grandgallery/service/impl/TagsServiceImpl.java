@@ -1,6 +1,6 @@
 package shu.jee.grandgallery.service.impl;
 
-import shu.jee.grandgallery.entity.Tags;
+import shu.jee.grandgallery.entity.data.Tags;
 import shu.jee.grandgallery.mapper.TTagsMapper;
 import shu.jee.grandgallery.service.TagsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

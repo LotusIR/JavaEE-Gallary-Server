@@ -1,7 +1,7 @@
 package shu.jee.grandgallery.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import shu.jee.grandgallery.entity.RecentVisit;
+import shu.jee.grandgallery.entity.data.RecentVisit;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

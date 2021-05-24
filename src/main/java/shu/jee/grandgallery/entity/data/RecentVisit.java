@@ -1,6 +1,7 @@
-package shu.jee.grandgallery.entity;
+package shu.jee.grandgallery.entity.data;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
@@ -20,25 +21,19 @@ import lombok.experimental.Accessors;
 @Data
   @EqualsAndHashCode(callSuper = false)
   @Accessors(chain = true)
-  @TableName("t_user")
-public class User implements Serializable {
+  @TableName("t_recent_visit")
+public class RecentVisit implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-      @TableId(value = "user_id", type = IdType.AUTO)
-      private Integer userId;
+      @TableId(value = "visit_id", type = IdType.AUTO)
+      private Integer visitId;
 
-    private String userName;
+    private Integer userId;
 
-    private String userPassword;
+    private Integer pictureId;
 
-    private String sex;
-
-    private Integer age;
-
-    private String publisher;
-
-    private String userEmail;
+    private LocalDate visitTime;
 
 
 }

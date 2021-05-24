@@ -1,8 +1,8 @@
 package shu.jee.grandgallery.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import shu.jee.grandgallery.entity.CategoryCnt;
-import shu.jee.grandgallery.entity.User;
+import shu.jee.grandgallery.entity.manual.CategoryCnt;
+import shu.jee.grandgallery.entity.data.User;
 
 import java.util.List;
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shu.jee.grandgallery.mapper.TPictureMapper">
+<resultMap id="InfoMap" type="shu.jee.grandgallery.entity.data.PictureInfo">
+    <result column="picture_id" jdbcType="INTEGER" property="pictureId" />
+    <result column="picture_name" jdbcType="VARCHAR"  property="pictureName" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+    <result column="uploader_id" jdbcType="INTEGER" property="uploaderId" />
+    <result column="uploader_name" jdbcType="VARCHAR" property="uploaderName" />
+</resultMap>
+    <select id="getInfo" parameterType="java.lang.Integer" resultMap="InfoMap">
+        select * from v_picture_info where picture_id = #{pictureId,jdbcType=INTEGER}
+    </select>
+</mapper>

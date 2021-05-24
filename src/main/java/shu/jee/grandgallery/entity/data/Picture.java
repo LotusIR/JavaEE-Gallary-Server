@@ -1,4 +1,4 @@
-package shu.jee.grandgallery.entity;
+package shu.jee.grandgallery.entity.data;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDate;

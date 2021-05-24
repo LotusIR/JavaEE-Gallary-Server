@@ -3,10 +3,10 @@ package shu.jee.grandgallery.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import shu.jee.grandgallery.entity.CategoryCnt;
-import shu.jee.grandgallery.entity.HistoryVisit;
-import shu.jee.grandgallery.entity.RecentVisit;
-import shu.jee.grandgallery.entity.User;
+import shu.jee.grandgallery.entity.manual.CategoryCnt;
+import shu.jee.grandgallery.entity.data.HistoryVisit;
+import shu.jee.grandgallery.entity.data.RecentVisit;
+import shu.jee.grandgallery.entity.data.User;
 import shu.jee.grandgallery.mapper.TUserMapper;
 import shu.jee.grandgallery.service.HistoryVisitService;
 import shu.jee.grandgallery.service.PictureService;
@@ -14,7 +14,6 @@ import shu.jee.grandgallery.service.RecentVisitService;
 import shu.jee.grandgallery.service.UserService;
 
 import java.util.*;
-import java.util.function.Predicate;
 
 /**
  * <p>
@@ -85,7 +84,7 @@ public class UserServiceImpl extends ServiceImpl<TUserMapper, User> implements U
                 return o2.getWeight().compareTo(o1.getWeight());
             }
         });
-        res = res.subList(0,10);
+        res = res.subList(0,Math.min(res.size(),10));
         return res;
     }
 }

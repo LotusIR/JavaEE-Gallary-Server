@@ -1,6 +1,6 @@
 package shu.jee.grandgallery.service;
 
-import shu.jee.grandgallery.entity.RecentVisit;
+import shu.jee.grandgallery.entity.data.RecentVisit;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
