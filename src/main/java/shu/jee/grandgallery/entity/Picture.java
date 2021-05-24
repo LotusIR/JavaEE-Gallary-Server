@@ -1,10 +1,10 @@
 package shu.jee.grandgallery.entity;
 
-import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDate;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,31 +16,26 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 杨宇辰
- * @since 2021-05-18
+ * @since 2021-05-24
  */
 @Data
   @EqualsAndHashCode(callSuper = false)
   @Accessors(chain = true)
-  @TableName("picture")
+  @TableName("t_picture")
 public class Picture implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @TableId
-    @TableField("picture_id")
+      @TableId(value = "picture_id", type = IdType.AUTO)
       private Integer pictureId;
 
-    @TableField("picture_Name")
     private String pictureName;
 
-    @TableField("category_id")
-    private Integer categoryId;
+    private String categoryName;
 
-    @TableField("user_id")
     private Integer userId;
 
-    @TableField("publish_time")
-    private LocalDateTime publishTime;
+    private LocalDate publishTime;
 
 
 }

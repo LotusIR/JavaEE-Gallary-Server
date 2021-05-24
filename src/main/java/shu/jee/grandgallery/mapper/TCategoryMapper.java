@@ -1,7 +1,7 @@
 package shu.jee.grandgallery.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import shu.jee.grandgallery.entity.PictureCategory;
+import shu.jee.grandgallery.entity.Category;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -10,9 +10,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author 杨宇辰
- * @since 2021-05-18
+ * @since 2021-05-24
  */
 @Mapper
-public interface PictureCategoryMapper extends BaseMapper<PictureCategory> {
+public interface TCategoryMapper extends BaseMapper<Category> {
 
 }

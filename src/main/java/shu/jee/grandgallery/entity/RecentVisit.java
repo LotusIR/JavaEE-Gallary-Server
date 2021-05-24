@@ -1,9 +1,10 @@
 package shu.jee.grandgallery.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDate;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,25 +16,24 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 杨宇辰
- * @since 2021-05-18
+ * @since 2021-05-24
  */
 @Data
   @EqualsAndHashCode(callSuper = false)
   @Accessors(chain = true)
-  @TableName("picture_tag")
-public class PictureTag implements Serializable {
+  @TableName("t_recent_visit")
+public class RecentVisit implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @TableId
-    @TableField("tag_id")
-      private Integer tagId;
+      @TableId(value = "visit_id", type = IdType.AUTO)
+      private Integer visitId;
 
-    @TableField("picture_id")
+    private Integer userId;
+
     private Integer pictureId;
 
-    @TableField("tag_name")
-    private String tagName;
+    private LocalDate visitTime;
 
 
 }

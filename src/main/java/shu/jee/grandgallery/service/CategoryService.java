@@ -1,6 +1,6 @@
 package shu.jee.grandgallery.service;
 
-import shu.jee.grandgallery.entity.PictureCategory;
+import shu.jee.grandgallery.entity.Category;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author 杨宇辰
- * @since 2021-05-18
+ * @since 2021-05-24
  */
-public interface PictureCategoryService extends IService<PictureCategory> {
+public interface CategoryService extends IService<Category> {
 
 }

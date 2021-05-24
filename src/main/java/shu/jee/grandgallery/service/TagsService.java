@@ -1,6 +1,6 @@
 package shu.jee.grandgallery.service;
 
-import shu.jee.grandgallery.entity.UserVisit;
+import shu.jee.grandgallery.entity.Tags;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author 杨宇辰
- * @since 2021-05-18
+ * @since 2021-05-24
  */
-public interface UserVisitService extends IService<UserVisit> {
+public interface TagsService extends IService<Tags> {
 
 }

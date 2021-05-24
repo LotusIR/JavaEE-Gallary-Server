@@ -1,7 +1,10 @@
 package shu.jee.grandgallery.service;
 
-import shu.jee.grandgallery.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import shu.jee.grandgallery.entity.CategoryCnt;
+import shu.jee.grandgallery.entity.User;
+
+import java.util.List;
 
 /**
  * <p>
@@ -9,10 +12,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author 杨宇辰
- * @since 2021-05-18
+ * @since 2021-05-24
  */
 public interface UserService extends IService<User> {
 
-    boolean checkPassword(Integer userId,String userPassword);
+    boolean checkPassword(Integer userId,String password);
 
+    List<CategoryCnt> calcRecommendCategories(Integer userId);
 }

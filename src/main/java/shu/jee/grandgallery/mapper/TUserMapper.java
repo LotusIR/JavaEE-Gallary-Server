@@ -1,7 +1,7 @@
 package shu.jee.grandgallery.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import shu.jee.grandgallery.entity.PictureTag;
+import shu.jee.grandgallery.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -10,9 +10,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author 杨宇辰
- * @since 2021-05-18
+ * @since 2021-05-24
  */
 @Mapper
-public interface PictureTagMapper extends BaseMapper<PictureTag> {
+public interface TUserMapper extends BaseMapper<User> {
 
 }

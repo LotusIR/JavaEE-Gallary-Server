@@ -1,9 +1,9 @@
 package shu.jee.grandgallery.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,24 +15,21 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 杨宇辰
- * @since 2021-05-18
+ * @since 2021-05-24
  */
 @Data
   @EqualsAndHashCode(callSuper = false)
   @Accessors(chain = true)
-  @TableName("user")
+  @TableName("t_user")
 public class User implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    @TableId
-    @TableField("user_id")
+      @TableId(value = "user_id", type = IdType.AUTO)
       private Integer userId;
 
-    @TableField("user_name")
     private String userName;
 
-    @TableField("user_password")
     private String userPassword;
 
     private String sex;
@@ -41,7 +38,6 @@ public class User implements Serializable {
 
     private String publisher;
 
-    @TableField("user_email")
     private String userEmail;
 
 

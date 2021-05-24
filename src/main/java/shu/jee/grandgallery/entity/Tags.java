@@ -18,16 +18,14 @@ import lombok.experimental.Accessors;
 @Data
   @EqualsAndHashCode(callSuper = false)
   @Accessors(chain = true)
-  @TableName("t_history_visit")
-public class HistoryVisit implements Serializable {
+  @TableName("t_tags")
+public class Tags implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-    private Integer userId;
+    private Integer pictureId;
 
-    private Integer historyNum;
-
-    private String categoryName;
+    private String tagName;
 
 
 }

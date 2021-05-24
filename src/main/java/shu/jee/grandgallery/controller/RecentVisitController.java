@@ -11,11 +11,11 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author 杨宇辰
- * @since 2021-05-18
+ * @since 2021-05-24
  */
 @Controller
-@RequestMapping("//pictureCategory")
-public class PictureCategoryController {
+@RequestMapping("//recentVisit")
+public class RecentVisitController {
 
 }
 
