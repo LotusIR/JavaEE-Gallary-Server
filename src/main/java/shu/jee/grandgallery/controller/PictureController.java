@@ -53,5 +53,19 @@ public class PictureController {
         }
         return Response.success(null,tagNames);
     }
+
+    @RequestMapping("/getPictures")
+    Response getPictures(String category,Integer page,String method) {
+        if (method == null)
+            return Response.success(null,pictureService.getPictures(category,page,"picture_id","asc"));
+        else if (method.equals("latest"))
+            return Response.success(null,pictureService.getPictures(category,page,"publish_time","desc"));
+        else if (method.equals("hottest"))
+            return Response.success(null,pictureService.getPictures(category,page,"view_time","desc"));
+        else
+            return Response.success(null,pictureService.getPictures(category,page,"picture_id","asc"));
+
+    }
+
 }
 

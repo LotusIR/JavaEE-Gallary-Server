@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import shu.jee.grandgallery.entity.data.Picture;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import shu.jee.grandgallery.entity.data.PictureInfo;
+import shu.jee.grandgallery.mapper.params.PictureParams;
+
+import java.util.List;
 
 /**
  * <p>
@@ -18,4 +21,6 @@ import shu.jee.grandgallery.entity.data.PictureInfo;
 public interface TPictureMapper extends BaseMapper<Picture> {
 
     PictureInfo getInfo(Integer pictureId);
+
+    List<PictureInfo> getPictures(PictureParams params);
 }

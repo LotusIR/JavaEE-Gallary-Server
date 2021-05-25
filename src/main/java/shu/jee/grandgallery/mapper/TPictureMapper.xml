@@ -7,8 +7,16 @@
     <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
     <result column="uploader_id" jdbcType="INTEGER" property="uploaderId" />
     <result column="uploader_name" jdbcType="VARCHAR" property="uploaderName" />
+    <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
+    <result column="view_time" jdbcType="INTEGER" property="viewTime" />
+    <result column="publish_time" jdbcType="DATE" property="publishTime" />
 </resultMap>
     <select id="getInfo" parameterType="java.lang.Integer" resultMap="InfoMap">
         select * from v_picture_info where picture_id = #{pictureId,jdbcType=INTEGER}
+    </select>
+
+    <select id="getPictures" parameterType="shu.jee.grandgallery.mapper.params.PictureParams" resultMap="InfoMap">
+        select * from v_picture_info where category_name = #{category,jdbcType=VARCHAR} order by ${orderBy} ${order}
+        limit #{startIndex},#{endIndex}
     </select>
 </mapper>
