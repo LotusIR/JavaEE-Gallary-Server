@@ -39,4 +39,10 @@
         call disfavourite_picture(#{userId},#{pictureId})
     </update>
 
+    <select id="getFavourites" resultMap="InfoMap">
+        select * from v_picture_info where v_picture_info.picture_id in (
+            select t_favourites.picture_id from t_favourites where user_id = #{userId}
+            )
+    </select>
+
 </mapper>

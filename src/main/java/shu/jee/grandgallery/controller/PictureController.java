@@ -2,6 +2,7 @@ package shu.jee.grandgallery.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import shu.jee.grandgallery.entity.data.PictureInfo;
 import shu.jee.grandgallery.entity.data.Tags;
 import shu.jee.grandgallery.entity.data.User;
+import shu.jee.grandgallery.request.CommentReq;
+import shu.jee.grandgallery.request.UserPictureReq;
 import shu.jee.grandgallery.response.Response;
 import shu.jee.grandgallery.service.PictureService;
 import shu.jee.grandgallery.service.TagsService;
@@ -73,8 +76,8 @@ public class PictureController {
     }
 
     @RequestMapping("/comment")
-    Response doComment(Integer userId,Integer pictureId,String content) {
-        if (pictureService.doComment(userId,pictureId,content)) {
+    Response doComment(@RequestBody CommentReq req) {
+        if (pictureService.doComment(req.getUserId(),req.getPictureId(),req.getContent())) {
             return Response.success(null);
         }
         else {
@@ -83,26 +86,26 @@ public class PictureController {
     }
 
     @RequestMapping("/likePicture")
-    Response likePicture(Integer userId,Integer pictureId) {
-        pictureService.likePicture(userId, pictureId);
+    Response likePicture(@RequestBody UserPictureReq req) {
+        pictureService.likePicture(req.getUserId(), req.getPictureId());
         return Response.success(null);
     }
 
     @RequestMapping("/dislikePicture")
-    Response dislikePicture(Integer userId,Integer pictureId) {
-        pictureService.dislikePicture(userId, pictureId);
+    Response dislikePicture(@RequestBody UserPictureReq req) {
+        pictureService.dislikePicture(req.getUserId(), req.getPictureId());
         return Response.success(null);
     }
 
     @RequestMapping("/favouritePicture")
-    Response favouritePicture(Integer userId,Integer pictureId) {
-        pictureService.favouritePicture(userId, pictureId);
+    Response favouritePicture(@RequestBody UserPictureReq req) {
+        pictureService.favouritePicture(req.getUserId(), req.getPictureId());
         return Response.success(null);
     }
 
     @RequestMapping("/disFavouritePicture")
-    Response disFavouritePicture(Integer userId,Integer pictureId) {
-        pictureService.disFavouritePicture(userId, pictureId);
+    Response disFavouritePicture(@RequestBody UserPictureReq req) {
+        pictureService.disFavouritePicture(req.getUserId(), req.getPictureId());
         return Response.success(null);
     }
 

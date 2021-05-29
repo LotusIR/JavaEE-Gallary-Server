@@ -31,4 +31,6 @@ public interface TPictureMapper extends BaseMapper<Picture> {
     Integer favouritePicture(Integer userId,Integer pictureId);
 
     Integer disFavouritePicture(Integer userId,Integer pictureId);
+
+    List<PictureInfo> getFavourites(Integer userId);
 }

@@ -45,5 +45,24 @@ public class UserController {
         return Response.success(null);
     }
 
+    @RequestMapping("/getFavourites")
+    Response getFavourite(Integer userId) {
+        return Response.success(null,userService.getFavourites(userId));
+    }
+
+    @RequestMapping("/isLike")
+    Response isLike(Integer userId,Integer pictureId) {
+        return Response.success(null,userService.isLikedPicture(userId,pictureId));
+    }
+
+    @RequestMapping("/isFavourite")
+    Response isFavourite(Integer userId,Integer pictureId) {
+        return Response.success(null,userService.isFavouritePicture(userId,pictureId));
+    }
+
+    @RequestMapping("/getRecent")
+    Response getRecent(Integer userId) {
+        return Response.success(null,userService.getRecentVisit(userId));
+    }
 }
 
