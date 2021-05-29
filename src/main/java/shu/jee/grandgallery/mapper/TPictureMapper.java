@@ -23,4 +23,12 @@ public interface TPictureMapper extends BaseMapper<Picture> {
     PictureInfo getInfo(Integer pictureId);
 
     List<PictureInfo> getPictures(PictureParams params);
+
+    Integer likePicture(Integer userId,Integer pictureId);
+
+    Integer dislikePicture(Integer userId,Integer pictureId);
+
+    Integer favouritePicture(Integer userId,Integer pictureId);
+
+    Integer disFavouritePicture(Integer userId,Integer pictureId);
 }

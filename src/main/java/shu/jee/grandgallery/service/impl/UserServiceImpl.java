@@ -7,6 +7,7 @@ import shu.jee.grandgallery.entity.manual.CategoryCnt;
 import shu.jee.grandgallery.entity.data.HistoryVisit;
 import shu.jee.grandgallery.entity.data.RecentVisit;
 import shu.jee.grandgallery.entity.data.User;
+import shu.jee.grandgallery.mapper.TRecentVisitMapper;
 import shu.jee.grandgallery.mapper.TUserMapper;
 import shu.jee.grandgallery.service.HistoryVisitService;
 import shu.jee.grandgallery.service.PictureService;
@@ -86,5 +87,17 @@ public class UserServiceImpl extends ServiceImpl<TUserMapper, User> implements U
         });
         res = res.subList(0,Math.min(res.size(),10));
         return res;
+    }
+
+    @Override
+    public Integer addHistory(Integer userId, Integer pictureId) {
+        return ((TRecentVisitMapper)recentVisitService.getBaseMapper()).addHistory(userId,pictureId);
+    }
+
+    @Override
+    public User getBasicInfo(Integer userId) {
+        User user = this.getById(userId);
+        user.setUserPassword(null);
+        return user;
     }
 }

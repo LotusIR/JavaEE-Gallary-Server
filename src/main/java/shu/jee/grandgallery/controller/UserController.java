@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 import shu.jee.grandgallery.request.UserLoginReq;
+import shu.jee.grandgallery.request.UserPictureReq;
 import shu.jee.grandgallery.response.Response;
 import shu.jee.grandgallery.service.UserService;
 
@@ -37,5 +38,12 @@ public class UserController {
     Response recommendCategories(Integer userId) {
         return Response.success(null,userService.calcRecommendCategories(userId));
     }
+
+    @RequestMapping("/addHistory")
+    Response addHistory(Integer userId,Integer pictureId) {
+        userService.addHistory(userId,pictureId);
+        return Response.success(null);
+    }
+
 }
 

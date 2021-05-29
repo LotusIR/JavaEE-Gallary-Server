@@ -26,9 +26,6 @@ public class RecentVisit implements Serializable {
 
     private static final long serialVersionUID=1L;
 
-      @TableId(value = "visit_id", type = IdType.AUTO)
-      private Integer visitId;
-
     private Integer userId;
 
     private Integer pictureId;
