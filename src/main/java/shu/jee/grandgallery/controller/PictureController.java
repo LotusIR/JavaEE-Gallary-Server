@@ -2,11 +2,9 @@ package shu.jee.grandgallery.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 import shu.jee.grandgallery.entity.data.PictureInfo;
 import shu.jee.grandgallery.entity.data.Tags;
 import shu.jee.grandgallery.entity.data.User;
@@ -43,14 +41,14 @@ public class PictureController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/getInfo")
+    @GetMapping("/getInfo")
     Response getInfo(Integer pictureId) {
         PictureInfo info = pictureService.getInformation(pictureId);
         if (info == null) return Response.error(null);
         else return Response.success(null,info);
     }
 
-    @RequestMapping("/getTags")
+    @GetMapping("/getTags")
     Response getTags(Integer pictureId) {
         Map<String,Object> qryMap = new HashMap<>();
         qryMap.put("picture_id",pictureId);
@@ -62,7 +60,7 @@ public class PictureController {
         return Response.success(null,tagNames);
     }
 
-    @RequestMapping("/getPictures")
+    @GetMapping("/getPictures")
     Response getPictures(String category,Integer page,String method) {
         if (method == null)
             return Response.success(null,pictureService.getPictures(category,page,"picture_id","asc"));
@@ -75,7 +73,7 @@ public class PictureController {
 
     }
 
-    @RequestMapping("/comment")
+    @PostMapping("/comment")
     Response doComment(@RequestBody CommentReq req) {
         if (pictureService.doComment(req.getUserId(),req.getPictureId(),req.getContent())) {
             return Response.success(null);
@@ -85,36 +83,36 @@ public class PictureController {
         }
     }
 
-    @RequestMapping("/likePicture")
+    @PostMapping("/likePicture")
     Response likePicture(@RequestBody UserPictureReq req) {
         pictureService.likePicture(req.getUserId(), req.getPictureId());
         return Response.success(null);
     }
 
-    @RequestMapping("/dislikePicture")
+    @PostMapping("/dislikePicture")
     Response dislikePicture(@RequestBody UserPictureReq req) {
         pictureService.dislikePicture(req.getUserId(), req.getPictureId());
         return Response.success(null);
     }
 
-    @RequestMapping("/favouritePicture")
+    @PostMapping("/favouritePicture")
     Response favouritePicture(@RequestBody UserPictureReq req) {
         pictureService.favouritePicture(req.getUserId(), req.getPictureId());
         return Response.success(null);
     }
 
-    @RequestMapping("/disFavouritePicture")
+    @PostMapping("/disFavouritePicture")
     Response disFavouritePicture(@RequestBody UserPictureReq req) {
         pictureService.disFavouritePicture(req.getUserId(), req.getPictureId());
         return Response.success(null);
     }
 
-    @RequestMapping("/getComment")
+    @GetMapping("/getComment")
     Response getComment(Integer pictureId) {
         return Response.success(null,pictureService.getComment(pictureId));
     }
 
-    @RequestMapping("/getPublisher")
+    @GetMapping("/getPublisher")
     Response getPublisher(Integer pictureId) {
         PictureInfo pictureInfo = pictureService.getInformation(pictureId);
         Integer publisherId = pictureInfo.getUploaderId();
