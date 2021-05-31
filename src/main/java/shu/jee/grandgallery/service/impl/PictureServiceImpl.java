@@ -12,7 +12,9 @@ import shu.jee.grandgallery.mapper.params.PictureParams;
 import shu.jee.grandgallery.service.PictureService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+import shu.jee.grandgallery.utils.dateformat;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,6 +74,18 @@ public class PictureServiceImpl extends ServiceImpl<TPictureMapper, Picture> imp
     @Override
     public void disFavouritePicture(Integer userId, Integer pictureId) {
         this.getBaseMapper().disFavouritePicture(userId, pictureId);
+    }
+
+    @Override
+    public void addPicture(PictureInfo pi) {
+        dateformat df=new dateformat();
+        LocalDateTime now=LocalDateTime.now();
+        pi.setUploaderName(df.localdatetimetostring(now));
+        pi.setLikesCount(0);
+        pi.setFavouritesCount(0);
+        pi.setViewTime(0);
+        pi.setCommentCount(0);
+        this.getBaseMapper().addPicture(pi.getPictureName(),pi.getCategoryName(),pi.getUploaderId(),pi.getUploaderName(),pi.getPictureUrl(),pi.getLikesCount(),pi.getFavouritesCount(),pi.getViewTime(),pi.getCommentCount(),pi.getDescription());
     }
 
 

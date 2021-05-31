@@ -1,26 +1,30 @@
 package shu.jee.grandgallery.controller;
 
 
+import com.UpYun;
+import com.upyun.UpException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import shu.jee.grandgallery.entity.data.PictureInfo;
 import shu.jee.grandgallery.entity.data.Tags;
 import shu.jee.grandgallery.entity.data.User;
 import shu.jee.grandgallery.request.CommentReq;
+import shu.jee.grandgallery.request.UploadReq;
 import shu.jee.grandgallery.request.UserPictureReq;
 import shu.jee.grandgallery.response.Response;
 import shu.jee.grandgallery.service.PictureService;
 import shu.jee.grandgallery.service.TagsService;
 import shu.jee.grandgallery.service.UserService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.*;
 
 /**
  * <p>
@@ -119,6 +123,22 @@ public class PictureController {
         PictureInfo pictureInfo = pictureService.getInformation(pictureId);
         Integer publisherId = pictureInfo.getUploaderId();
         return Response.success(null,userService.getBasicInfo(publisherId));
+    }
+
+    @PostMapping("/uploadPicture")
+    Response uploadPicture(MultipartFile file,String picturename,String categoryname,String description,Integer userid) throws IOException, UpException {
+        PictureInfo pictureInfo=new PictureInfo();
+        pictureInfo.setPictureName(picturename);
+        pictureInfo.setDescription(description);
+        pictureInfo.setCategoryName(categoryname);
+        pictureInfo.setUploaderId(userid);
+        UpYun upYun=new UpYun("grandgallery-image","zjh","Sb1GzBevRLbpcG2WsfOp5JFmmQrQOTLn");
+        String filename=file.getOriginalFilename()+ UUID.randomUUID().toString()+".jpg";
+        pictureInfo.setPictureUrl("http://job-imags.test.upcdn.net/"+filename);
+        System.out.println("图片名称："+filename);
+        boolean re = upYun.writeFile(filename,file.getBytes(),false);
+        pictureService.addPicture(pictureInfo);
+        return Response.success(null);
     }
 
 

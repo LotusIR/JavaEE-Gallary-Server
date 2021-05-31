@@ -1,5 +1,6 @@
 package shu.jee.grandgallery.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import shu.jee.grandgallery.entity.data.Picture;
@@ -33,4 +34,7 @@ public interface TPictureMapper extends BaseMapper<Picture> {
     Integer disFavouritePicture(Integer userId,Integer pictureId);
 
     List<PictureInfo> getFavourites(Integer userId);
+
+    @Insert("insert into t_picture(picture_name,category_name,user_id,publish_time,picture_url,likes_count,favourites_count,view_time,comment_count,description) values(#{picturename},#{categoryname},#{userId},#{publishtime},#{pictureurl},#{likescount},#{favouritescount},#{viewtime},#{commentcount},#{description})")
+    Integer addPicture(String picturename,String categoryname,Integer userId,String publishtime,String pictureurl,Integer likescount,Integer favouritescount,Integer viewtime,Integer commentcount,String description);
 }
