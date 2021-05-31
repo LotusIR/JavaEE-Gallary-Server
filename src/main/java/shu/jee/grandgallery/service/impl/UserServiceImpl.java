@@ -4,10 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import shu.jee.grandgallery.entity.data.PictureInfo;
 import shu.jee.grandgallery.entity.manual.CategoryCnt;
 import shu.jee.grandgallery.entity.data.HistoryVisit;
 import shu.jee.grandgallery.entity.data.RecentVisit;
 import shu.jee.grandgallery.entity.data.User;
+import shu.jee.grandgallery.mapper.TPictureMapper;
+import shu.jee.grandgallery.mapper.TRecentVisitMapper;
 import shu.jee.grandgallery.mapper.TUserMapper;
 import shu.jee.grandgallery.service.HistoryVisitService;
 import shu.jee.grandgallery.service.PictureService;
@@ -36,15 +39,30 @@ public class UserServiceImpl extends ServiceImpl<TUserMapper, User> implements U
     @Autowired
     PictureService pictureService;
 
+    @Autowired
+    TPictureMapper pictureMapper;
+
     List<HistoryVisit> getHistoryVisit(Integer userId) {
         Map<String,Object> qryMap = new HashMap<String,Object>();
         qryMap.put("user_id",userId);
         return historyVisitService.listByMap(qryMap);
     }
-    List<RecentVisit> getRecentVisit(Integer userId) {
+
+    @Override
+    public List<RecentVisit> getRecentVisit(Integer userId) {
         Map<String,Object> qryMap = new HashMap<String,Object>();
         qryMap.put("user_id",userId);
         return recentVisitService.listByMap(qryMap);
+    }
+
+    @Override
+    public boolean isLikedPicture(Integer userId, Integer pictureId) {
+        return this.getBaseMapper().likedPicture(userId,pictureId) > 0;
+    }
+
+    @Override
+    public boolean isFavouritePicture(Integer userId, Integer pictureId) {
+        return this.getBaseMapper().isFavourite(userId,pictureId) > 0;
     }
 
     @Override
@@ -104,6 +122,23 @@ public class UserServiceImpl extends ServiceImpl<TUserMapper, User> implements U
         QueryWrapper<User> qry = new QueryWrapper<>();
         qry.eq("user_name",username);
         return this.getBaseMapper().selectOne(qry);
+    }
+
+    @Override
+    public Integer addHistory(Integer userId, Integer pictureId) {
+        return ((TRecentVisitMapper)recentVisitService.getBaseMapper()).addHistory(userId,pictureId);
+    }
+
+    @Override
+    public User getBasicInfo(Integer userId) {
+        User user = this.getById(userId);
+        user.setUserPassword(null);
+        return user;
+    }
+
+    @Override
+    public List<PictureInfo> getFavourites(Integer userId) {
+        return pictureMapper.getFavourites(userId);
     }
 
 

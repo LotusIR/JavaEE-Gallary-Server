@@ -12,6 +12,34 @@ public class PictureInfo {
     private String uploaderName;
     private String pictureUrl;
     private Integer viewTime;
+    private Integer favouritesCount;
+    private Integer likesCount;
+    private Integer commentCount;
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public Integer getFavouritesCount() {
+        return favouritesCount;
+    }
+
+    public void setFavouritesCount(Integer favouritesCount) {
+        this.favouritesCount = favouritesCount;
+    }
+
+    public Integer getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(Integer likesCount) {
+        this.likesCount = likesCount;
+    }
+
     private Date publishTime;
 
     public String getPictureUrl() {

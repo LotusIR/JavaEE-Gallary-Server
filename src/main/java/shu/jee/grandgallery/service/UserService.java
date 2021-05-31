@@ -1,6 +1,8 @@
 package shu.jee.grandgallery.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import shu.jee.grandgallery.entity.data.PictureInfo;
+import shu.jee.grandgallery.entity.data.RecentVisit;
 import shu.jee.grandgallery.entity.manual.CategoryCnt;
 import shu.jee.grandgallery.entity.data.User;
 
@@ -23,4 +25,16 @@ public interface UserService extends IService<User> {
     boolean register(User user);
 
     User getByUsername(String username);
+    
+    Integer addHistory(Integer userId,Integer pictureId);
+
+    User getBasicInfo(Integer userId);
+
+    List<PictureInfo> getFavourites(Integer userId);
+
+    List<RecentVisit> getRecentVisit(Integer userId);
+
+    boolean isLikedPicture(Integer userId,Integer pictureId);
+
+    boolean isFavouritePicture(Integer userId,Integer pictureId);
 }

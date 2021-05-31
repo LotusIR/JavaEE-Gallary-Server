@@ -10,6 +10,9 @@
     <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
     <result column="view_time" jdbcType="INTEGER" property="viewTime" />
     <result column="publish_time" jdbcType="DATE" property="publishTime" />
+    <result column="favourites_count" jdbcType="INTEGER" property="favouritesCount" />
+    <result column="likes_count" jdbcType="INTEGER" property="likesCount" />
+    <result column="comment_count" jdbcType="INTEGER" property="commentCount" />
 </resultMap>
     <select id="getInfo" parameterType="java.lang.Integer" resultMap="InfoMap">
         select * from v_picture_info where picture_id = #{pictureId,jdbcType=INTEGER}
@@ -19,4 +22,27 @@
         select * from v_picture_info where category_name = #{category,jdbcType=VARCHAR} order by ${orderBy} ${order}
         limit #{startIndex},#{endIndex}
     </select>
+
+    <update id="likePicture">
+        call like_picture(#{userId},#{pictureId})
+    </update>
+
+    <update id="dislikePicture">
+        call dislike_picture(#{userId},#{pictureId})
+    </update>
+
+    <update id="favouritePicture">
+        call favourite_picture(#{userId},#{pictureId})
+    </update>
+
+    <update id="disFavouritePicture">
+        call disfavourite_picture(#{userId},#{pictureId})
+    </update>
+
+    <select id="getFavourites" resultMap="InfoMap">
+        select * from v_picture_info where v_picture_info.picture_id in (
+            select t_favourites.picture_id from t_favourites where user_id = #{userId}
+            )
+    </select>
+
 </mapper>

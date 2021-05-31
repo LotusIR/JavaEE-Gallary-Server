@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import shu.jee.grandgallery.entity.data.User;
 import shu.jee.grandgallery.request.UserLoginReq;
+import shu.jee.grandgallery.request.UserPictureReq;
 import shu.jee.grandgallery.response.Response;
 import shu.jee.grandgallery.service.UserService;
 
@@ -47,6 +48,30 @@ public class UserController {
         else {
             return Response.error("用户名已存在");
         }
+    @RequestMapping("/addHistory")
+    Response addHistory(Integer userId,Integer pictureId) {
+        userService.addHistory(userId,pictureId);
+        return Response.success(null);
+    }
+
+    @RequestMapping("/getFavourites")
+    Response getFavourite(Integer userId) {
+        return Response.success(null,userService.getFavourites(userId));
+    }
+
+    @RequestMapping("/isLike")
+    Response isLike(Integer userId,Integer pictureId) {
+        return Response.success(null,userService.isLikedPicture(userId,pictureId));
+    }
+
+    @RequestMapping("/isFavourite")
+    Response isFavourite(Integer userId,Integer pictureId) {
+        return Response.success(null,userService.isFavouritePicture(userId,pictureId));
+    }
+
+    @RequestMapping("/getRecent")
+    Response getRecent(Integer userId) {
+        return Response.success(null,userService.getRecentVisit(userId));
     }
 }
 

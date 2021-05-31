@@ -15,4 +15,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 @Mapper
 public interface TUserMapper extends BaseMapper<User> {
 
+    Integer likedPicture(Integer userId,Integer pictureId);
+
+    Integer isFavourite(Integer userId,Integer pictureId);
 }

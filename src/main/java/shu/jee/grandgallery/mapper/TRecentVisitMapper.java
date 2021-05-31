@@ -15,4 +15,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 @Mapper
 public interface TRecentVisitMapper extends BaseMapper<RecentVisit> {
 
+    Integer addHistory(Integer userId,Integer pictureId);
+
 }
