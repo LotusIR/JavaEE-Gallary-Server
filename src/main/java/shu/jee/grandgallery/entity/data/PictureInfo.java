@@ -11,10 +11,19 @@ public class PictureInfo {
     private Integer uploaderId;
     private String uploaderName;
     private String pictureUrl;
+    private String description;
     private Integer viewTime;
     private Integer favouritesCount;
     private Integer likesCount;
     private Integer commentCount;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Integer getCommentCount() {
         return commentCount;

@@ -12,6 +12,11 @@ import shu.jee.grandgallery.request.UserPictureReq;
 import shu.jee.grandgallery.response.Response;
 import shu.jee.grandgallery.service.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * <p>
  *  前端控制器
@@ -74,5 +79,6 @@ public class UserController {
     Response getRecent(Integer userId) {
         return Response.success(null,userService.getRecentVisit(userId));
     }
+
 }
 
