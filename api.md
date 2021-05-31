@@ -72,6 +72,22 @@ url: "/user/getRecent"
 返回一个列表，每一项为一个浏览记录，包含图片号以及浏览时间
 ```
 
+### 注册（新增）
+```
+url: "/user/register"
+请求方式: post
+请求参数: {userName,userPassword}
+注册成功返回一个user对象，失败返回message：“用户名已存在”
+```
+
+### 添加浏览记录（新增）
+```
+url: "/user/addHistory"
+请求方式: get
+请求参数: userId,pictureId
+无返回，添加（更新）一次浏览记录，会增加图片的浏览次数
+```
+
 
 # PictureController
 

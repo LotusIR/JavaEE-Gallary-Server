@@ -22,6 +22,10 @@ public interface UserService extends IService<User> {
 
     List<CategoryCnt> calcRecommendCategories(Integer userId);
 
+    boolean register(User user);
+
+    User getByUsername(String username);
+    
     Integer addHistory(Integer userId,Integer pictureId);
 
     User getBasicInfo(Integer userId);

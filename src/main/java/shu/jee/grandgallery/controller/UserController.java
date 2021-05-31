@@ -4,10 +4,17 @@ package shu.jee.grandgallery.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.annotation.RestController;
+import shu.jee.grandgallery.entity.data.User;
 import shu.jee.grandgallery.request.UserLoginReq;
 import shu.jee.grandgallery.request.UserPictureReq;
 import shu.jee.grandgallery.response.Response;
 import shu.jee.grandgallery.service.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * <p>
@@ -37,7 +44,16 @@ public class UserController {
         return Response.success(null,userService.calcRecommendCategories(userId));
     }
 
-    @GetMapping("/addHistory")
+    @RequestMapping("/register")
+    Response registerUser(@RequestBody User user) {
+        if (userService.register(user)) {
+            return Response.success(null, userService.getByUsername(user.getUserName()));
+        } else {
+            return Response.error("用户名已存在");
+        }
+    }
+
+    @RequestMapping("/addHistory")
     Response addHistory(Integer userId,Integer pictureId) {
         userService.addHistory(userId,pictureId);
         return Response.success(null);
@@ -62,5 +78,6 @@ public class UserController {
     Response getRecent(Integer userId) {
         return Response.success(null,userService.getRecentVisit(userId));
     }
+
 }
 

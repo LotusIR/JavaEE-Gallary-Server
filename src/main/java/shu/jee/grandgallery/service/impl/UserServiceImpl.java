@@ -1,5 +1,6 @@
 package shu.jee.grandgallery.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -104,6 +105,23 @@ public class UserServiceImpl extends ServiceImpl<TUserMapper, User> implements U
         });
         res = res.subList(0,Math.min(res.size(),10));
         return res;
+    }
+
+    @Override
+    public boolean register(User user) {
+        if (this.getBaseMapper().insert(user) > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        QueryWrapper<User> qry = new QueryWrapper<>();
+        qry.eq("user_name",username);
+        return this.getBaseMapper().selectOne(qry);
     }
 
     @Override

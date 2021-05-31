@@ -32,4 +32,6 @@ public interface PictureService extends IService<Picture> {
     void favouritePicture(Integer userId,Integer pictureId);
 
     void disFavouritePicture(Integer userId,Integer pictureId);
+
+    void addPicture(PictureInfo pi);
 }
