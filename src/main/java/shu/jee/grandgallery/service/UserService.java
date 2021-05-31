@@ -19,4 +19,8 @@ public interface UserService extends IService<User> {
     boolean checkPassword(Integer userId,String password);
 
     List<CategoryCnt> calcRecommendCategories(Integer userId);
+
+    boolean register(User user);
+
+    User getByUsername(String username);
 }
