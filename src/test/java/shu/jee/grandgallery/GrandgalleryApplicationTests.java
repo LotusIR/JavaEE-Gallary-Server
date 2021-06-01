@@ -50,7 +50,7 @@ class GrandgalleryApplicationTests {
         PictureInfo pictureInfo=new PictureInfo();
         pictureInfo.setPictureName("测试");
         pictureInfo.setDescription("测试");
-        pictureInfo.setCategoryName("动物");
+        pictureInfo.setCategoryName("风景");
         pictureInfo.setUploaderId(1);
         UpYun upYun=new UpYun("grandgallery-image","zjh","Sb1GzBevRLbpcG2WsfOp5JFmmQrQOTLn");
         String filename=mulfile.getOriginalFilename()+ UUID.randomUUID().toString()+".jpg";

@@ -134,7 +134,7 @@ public class PictureController {
         pictureInfo.setUploaderId(userid);
         UpYun upYun=new UpYun("grandgallery-image","zjh","Sb1GzBevRLbpcG2WsfOp5JFmmQrQOTLn");
         String filename=file.getOriginalFilename()+ UUID.randomUUID().toString()+".jpg";
-        pictureInfo.setPictureUrl("http://job-imags.test.upcdn.net/"+filename);
+        pictureInfo.setPictureUrl("http://grandgallery-image.test.upcdn.net/"+filename);
         System.out.println("图片名称："+filename);
         boolean re = upYun.writeFile(filename,file.getBytes(),false);
         pictureService.addPicture(pictureInfo);

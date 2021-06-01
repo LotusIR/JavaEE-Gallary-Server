@@ -16,15 +16,6 @@ public class PictureInfo {
     private Integer favouritesCount;
     private Integer likesCount;
     private Integer commentCount;
-    private String description;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public String getDescription() {
         return description;
