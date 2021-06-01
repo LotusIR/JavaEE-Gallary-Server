@@ -15,6 +15,7 @@ import shu.jee.grandgallery.entity.data.Picture;
 import shu.jee.grandgallery.entity.data.PictureInfo;
 import shu.jee.grandgallery.entity.data.Tags;
 import shu.jee.grandgallery.request.CommentReq;
+import shu.jee.grandgallery.request.UploadReq;
 import shu.jee.grandgallery.request.UserPictureReq;
 import shu.jee.grandgallery.response.Response;
 import shu.jee.grandgallery.service.PictureService;
@@ -146,17 +147,17 @@ public class PictureController {
     }
 
     @PostMapping("/uploadPicture")
-    Response uploadPicture(MultipartFile file,String picturename,String categoryname,String description,Integer userid) throws IOException, UpException {
+    Response uploadPicture(@RequestBody UploadReq req) throws IOException, UpException {
         PictureInfo pictureInfo=new PictureInfo();
-        pictureInfo.setPictureName(picturename);
-        pictureInfo.setDescription(description);
-        pictureInfo.setCategoryName(categoryname);
-        pictureInfo.setUploaderId(userid);
+        pictureInfo.setPictureName(req.getPictureName());
+        pictureInfo.setDescription(req.getDescription());
+        pictureInfo.setCategoryName(req.getCategoryName());
+        pictureInfo.setUploaderId(req.getUserId());
         UpYun upYun=new UpYun("grandgallery-image","zjh","Sb1GzBevRLbpcG2WsfOp5JFmmQrQOTLn");
-        String filename=file.getOriginalFilename()+ UUID.randomUUID().toString()+".jpg";
+        String filename=req.getFile().getOriginalFilename()+ UUID.randomUUID().toString()+".jpg";
         pictureInfo.setPictureUrl("http://grandgallery-image.test.upcdn.net/"+filename);
         System.out.println("图片名称："+filename);
-        boolean re = upYun.writeFile(filename,file.getBytes(),false);
+        boolean re = upYun.writeFile(filename,req.getFile().getBytes(),false);
         pictureService.addPicture(pictureInfo);
         return Response.success(null);
     }
