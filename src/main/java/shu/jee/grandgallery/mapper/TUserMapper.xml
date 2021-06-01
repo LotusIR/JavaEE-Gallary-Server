@@ -15,9 +15,9 @@
         select user2_id from t_friends where user1_id = #{userId}
     </select>
 
-    <insert id="addFriend">
+    <select id="addFriend" resultType="java.lang.Integer">
         call add_friend(#{userId1},#{userId2})
-    </insert>
+    </select>
 
     <delete id="deleteFriend">
         delete from t_friends where user1_id = #{userId1} and user2_id = #{userId2}
