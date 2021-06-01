@@ -45,10 +45,10 @@ class GrandgalleryApplicationTests {
 
     @Test
     void test2() throws IOException, UpException {
-        File file = new File("F:/tree.jpg");
-        MultipartFile mulfile=new MockMultipartFile("tree.jpg","tree.jpg","application/octet-stream" ,new FileInputStream(file));
+        File file = new File("F:/testimage1.jpg");
+        MultipartFile mulfile=new MockMultipartFile("testimage1.jpg","testimage1.jpg","application/octet-stream" ,new FileInputStream(file));
         PictureInfo pictureInfo=new PictureInfo();
-        pictureInfo.setPictureName("测试");
+        pictureInfo.setPictureName("大自然");
         pictureInfo.setDescription("测试");
         pictureInfo.setCategoryName("风景");
         pictureInfo.setUploaderId(1);
