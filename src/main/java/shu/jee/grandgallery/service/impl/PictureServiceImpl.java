@@ -40,7 +40,7 @@ public class PictureServiceImpl extends ServiceImpl<TPictureMapper, Picture> imp
 
     @Override
     public List<Picture> getPictures(Integer uploaderId,String categoryName,String orderBy,String order,Integer page) {
-        Integer numPerPage = 2;
+        Integer numPerPage = 10;
         QueryWrapper<Picture> qry = new QueryWrapper<>();
         if (uploaderId != null)
             qry.eq("user_id",uploaderId);
