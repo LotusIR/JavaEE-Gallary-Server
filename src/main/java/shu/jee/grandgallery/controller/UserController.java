@@ -44,7 +44,7 @@ public class UserController {
         return Response.success(null,userService.calcRecommendCategories(userId));
     }
 
-    @RequestMapping("/register")
+    @PostMapping("/register")
     Response registerUser(@RequestBody User user) {
         if (userService.register(user)) {
             return Response.success(null, userService.getByUsername(user.getUserName()));
@@ -53,7 +53,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/addHistory")
+    @GetMapping("/addHistory")
     Response addHistory(Integer userId,Integer pictureId) {
         userService.addHistory(userId,pictureId);
         return Response.success(null);
@@ -79,5 +79,21 @@ public class UserController {
         return Response.success(null,userService.getRecentVisit(userId));
     }
 
+    @GetMapping("/getFriends")
+    Response getFriends(Integer userId) {
+        return Response.success(null,userService.getFriends(userId));
+    }
+
+    @GetMapping("/addFriend")
+    Response addFriend(Integer userId1,Integer userId2) {
+        userService.addFriend(userId1, userId2);
+        return Response.success(null);
+    }
+
+    @GetMapping("/deleteFriend")
+    Response deleteFriend(Integer userId1,Integer userId2) {
+        userService.deleteFriend(userId1, userId2);
+        return Response.success(null);
+    }
 }
 

@@ -37,4 +37,10 @@ public interface UserService extends IService<User> {
     boolean isLikedPicture(Integer userId,Integer pictureId);
 
     boolean isFavouritePicture(Integer userId,Integer pictureId);
+
+    List<Integer> getFriends(Integer userId);
+
+    void addFriend(Integer userId1,Integer userId2);
+
+    void deleteFriend(Integer userId1,Integer userId2);
 }

@@ -1,17 +1,15 @@
 package shu.jee.grandgallery.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import shu.jee.grandgallery.entity.data.Comment;
 import shu.jee.grandgallery.entity.data.Picture;
 import shu.jee.grandgallery.entity.data.PictureInfo;
 import shu.jee.grandgallery.mapper.TCommentMapper;
 import shu.jee.grandgallery.mapper.TPictureMapper;
-import shu.jee.grandgallery.mapper.params.PictureParams;
 import shu.jee.grandgallery.service.PictureService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
 import shu.jee.grandgallery.utils.dateformat;
 
 import java.time.LocalDateTime;
@@ -39,9 +37,23 @@ public class PictureServiceImpl extends ServiceImpl<TPictureMapper, Picture> imp
     }
 
     @Override
-    public List<PictureInfo> getPictures(String category, Integer page, String orderBy, String order) {
+    public List<Picture> getPictures(Integer uploaderId,String categoryName,String orderBy,String order) {
         Integer numPerPage = 20;
-        return getBaseMapper().getPictures(new PictureParams(category,numPerPage*(page-1),numPerPage*page,orderBy,order));
+        QueryWrapper<Picture> qry = new QueryWrapper<>();
+        if (uploaderId != null)
+            qry.eq("user_id",uploaderId);
+        if (categoryName != null)
+            qry.eq("category_name",categoryName);
+        if (order != null && orderBy != null) {
+            if (order.equals("ASC")) {
+                qry.orderByAsc(orderBy);
+            }
+            else if (order.equals("DESC")) {
+                qry.orderByDesc(orderBy);
+            }
+        }
+        else qry.orderByDesc("view_time");
+        return this.list(qry);
     }
 
     @Override

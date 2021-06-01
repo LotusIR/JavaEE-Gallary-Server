@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -35,7 +36,7 @@ public class Picture implements Serializable {
 
     private Integer userId;
 
-    private LocalDate publishTime;
+    private Date publishTime;
 
 
 }

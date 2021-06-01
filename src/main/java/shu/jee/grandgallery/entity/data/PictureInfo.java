@@ -3,6 +3,7 @@ package shu.jee.grandgallery.entity.data;
 
 import java.util.Date;
 
+
 public class PictureInfo {
 
     private Integer pictureId;
@@ -16,6 +17,8 @@ public class PictureInfo {
     private Integer favouritesCount;
     private Integer likesCount;
     private Integer commentCount;
+    private Date publishTime;
+
 
     public String getDescription() {
         return description;
@@ -48,8 +51,6 @@ public class PictureInfo {
     public void setLikesCount(Integer likesCount) {
         this.likesCount = likesCount;
     }
-
-    private Date publishTime;
 
     public String getPictureUrl() {
         return pictureUrl;

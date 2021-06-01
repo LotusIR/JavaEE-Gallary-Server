@@ -5,20 +5,11 @@ import com.UpYun;
 import com.upyun.UpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import shu.jee.grandgallery.entity.data.Picture;
 import shu.jee.grandgallery.entity.data.PictureInfo;
 import shu.jee.grandgallery.entity.data.Tags;
-import shu.jee.grandgallery.entity.data.User;
 import shu.jee.grandgallery.request.CommentReq;
-import shu.jee.grandgallery.request.UploadReq;
 import shu.jee.grandgallery.request.UserPictureReq;
 import shu.jee.grandgallery.response.Response;
 import shu.jee.grandgallery.service.PictureService;
@@ -26,7 +17,6 @@ import shu.jee.grandgallery.service.TagsService;
 import shu.jee.grandgallery.service.UserService;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -69,17 +59,26 @@ public class PictureController {
         return Response.success(null,tagNames);
     }
 
+//    @GetMapping("/getPictures")
+//    Response getPictures(String category,Integer page,String method) {
+//        if (method == null)
+//            return Response.success(null,pictureService.getPictures(category,page,"picture_id","asc"));
+//        else if (method.equals("latest"))
+//            return Response.success(null,pictureService.getPictures(category,page,"publish_time","desc"));
+//        else if (method.equals("hottest"))
+//            return Response.success(null,pictureService.getPictures(category,page,"view_time","desc"));
+//        else
+//            return Response.success(null,pictureService.getPictures(category,page,"picture_id","asc"));
+//
+//    }
     @GetMapping("/getPictures")
-    Response getPictures(String category,Integer page,String method) {
-        if (method == null)
-            return Response.success(null,pictureService.getPictures(category,page,"picture_id","asc"));
-        else if (method.equals("latest"))
-            return Response.success(null,pictureService.getPictures(category,page,"publish_time","desc"));
-        else if (method.equals("hottest"))
-            return Response.success(null,pictureService.getPictures(category,page,"view_time","desc"));
-        else
-            return Response.success(null,pictureService.getPictures(category,page,"picture_id","asc"));
-
+    Response getPictures(Integer uploaderId,String categoryName,String orderBy,String order) {
+        List<Picture> pictures = pictureService.getPictures(uploaderId,categoryName,orderBy,order);
+        List<PictureInfo> pictureInfos = new ArrayList<>();
+        for (Picture picture:pictures) {
+            pictureInfos.add(pictureService.getInformation(picture.getPictureId()));
+        }
+        return Response.success(null,pictureInfos);
     }
 
     @PostMapping("/comment")

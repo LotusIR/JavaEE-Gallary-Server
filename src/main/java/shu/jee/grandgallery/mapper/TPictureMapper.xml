@@ -9,7 +9,7 @@
     <result column="uploader_name" jdbcType="VARCHAR" property="uploaderName" />
     <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
     <result column="view_time" jdbcType="INTEGER" property="viewTime" />
-    <result column="publish_time" jdbcType="DATE" property="publishTime" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
     <result column="favourites_count" jdbcType="INTEGER" property="favouritesCount" />
     <result column="likes_count" jdbcType="INTEGER" property="likesCount" />
     <result column="comment_count" jdbcType="INTEGER" property="commentCount" />
