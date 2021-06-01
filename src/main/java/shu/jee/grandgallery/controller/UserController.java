@@ -93,15 +93,17 @@ public class UserController {
     @GetMapping("/addFriend")
     @ApiOperation("userId1关注userId2")
     Response addFriend(Integer userId1,Integer userId2) {
-        userService.addFriend(userId1, userId2);
-        return Response.success(null);
+        if (userService.addFriend(userId1, userId2))
+            return Response.success("关注成功");
+        else return Response.error("已经关注过该用户");
     }
 
     @GetMapping("/deleteFriend")
     @ApiOperation("userId1取消关注userId2")
     Response deleteFriend(Integer userId1,Integer userId2) {
-        userService.deleteFriend(userId1, userId2);
-        return Response.success(null);
+        if (userService.deleteFriend(userId1, userId2))
+            return Response.success("取消关注成功");
+        else return Response.error("你没有关注该用户");
     }
 }
 

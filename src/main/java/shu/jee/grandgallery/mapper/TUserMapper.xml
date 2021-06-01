@@ -16,7 +16,7 @@
     </select>
 
     <insert id="addFriend">
-        insert into t_friends(user1_id,user2_id) values (#{userId1},#{userId2})
+        call add_friend(#{userId1},#{userId2})
     </insert>
 
     <delete id="deleteFriend">

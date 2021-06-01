@@ -71,15 +71,15 @@ public class UserServiceImpl extends ServiceImpl<TUserMapper, User> implements U
     }
 
     @Override
-    public void addFriend(Integer userId1, Integer userId2) {
-        if (userId1.equals(userId2)) return;
-        this.getBaseMapper().addFriend(userId1,userId2);
+    public boolean addFriend(Integer userId1, Integer userId2) {
+        if (userId1.equals(userId2)) return false;
+        return this.getBaseMapper().addFriend(userId1,userId2).equals(1);
     }
 
     @Override
-    public void deleteFriend(Integer userId1, Integer userId2) {
-        if (userId1.equals(userId2)) return;
-        this.getBaseMapper().deleteFriend(userId1, userId2);
+    public boolean deleteFriend(Integer userId1, Integer userId2) {
+        if (userId1.equals(userId2)) return false;
+        return this.getBaseMapper().deleteFriend(userId1, userId2) > 0;
     }
 
     @Override

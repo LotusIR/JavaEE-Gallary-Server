@@ -40,7 +40,7 @@ public interface UserService extends IService<User> {
 
     List<Integer> getFriends(Integer userId);
 
-    void addFriend(Integer userId1,Integer userId2);
+    boolean addFriend(Integer userId1,Integer userId2);
 
-    void deleteFriend(Integer userId1,Integer userId2);
+    boolean deleteFriend(Integer userId1,Integer userId2);
 }
