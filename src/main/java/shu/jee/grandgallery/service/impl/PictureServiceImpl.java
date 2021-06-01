@@ -1,6 +1,8 @@
 package shu.jee.grandgallery.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,8 +39,8 @@ public class PictureServiceImpl extends ServiceImpl<TPictureMapper, Picture> imp
     }
 
     @Override
-    public List<Picture> getPictures(Integer uploaderId,String categoryName,String orderBy,String order) {
-        Integer numPerPage = 20;
+    public List<Picture> getPictures(Integer uploaderId,String categoryName,String orderBy,String order,Integer page) {
+        Integer numPerPage = 2;
         QueryWrapper<Picture> qry = new QueryWrapper<>();
         if (uploaderId != null)
             qry.eq("user_id",uploaderId);
@@ -53,7 +55,7 @@ public class PictureServiceImpl extends ServiceImpl<TPictureMapper, Picture> imp
             }
         }
         else qry.orderByDesc("view_time");
-        return this.list(qry);
+        return this.page(new Page<>(page,numPerPage),qry).getRecords();
     }
 
     @Override
