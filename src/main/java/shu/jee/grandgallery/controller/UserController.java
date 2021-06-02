@@ -105,5 +105,16 @@ public class UserController {
             return Response.success("取消关注成功");
         else return Response.error("你没有关注该用户");
     }
+
+    @GetMapping("/isFriend")
+    @ApiOperation("userId1是否关注userId2")
+    Response isFriend(Integer userID1,Integer userID2){
+        if (userService.isFriend(userID1,userID2))
+            return Response.success(null,true);
+        else
+            return  Response.success(null,false);
+    }
+
+
 }
 

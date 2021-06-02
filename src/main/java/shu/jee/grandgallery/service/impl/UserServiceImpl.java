@@ -83,6 +83,16 @@ public class UserServiceImpl extends ServiceImpl<TUserMapper, User> implements U
     }
 
     @Override
+    public boolean isFriend(Integer userid1, Integer userid2) {
+        if(this.getBaseMapper().isFreind(userid1,userid2)==0){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    @Override
     public boolean checkPassword(Integer userId, String password) {
         User user = getById(userId);
         if (user == null) return false;

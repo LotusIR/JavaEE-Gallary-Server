@@ -2,6 +2,7 @@ package shu.jee.grandgallery.mapper;
 
 import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import shu.jee.grandgallery.entity.data.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -27,4 +28,9 @@ public interface TUserMapper extends BaseMapper<User> {
     Integer addFriend(Integer userId1,Integer userId2);
 
     Integer deleteFriend(Integer userId1,Integer userId2);
+
+    @Select("select count(*) from t_friends where user1_id=#{user1_id} and user2_id=#{user2_id}")
+    Integer isFreind(Integer user1_id,Integer user2_id);
+
+
 }

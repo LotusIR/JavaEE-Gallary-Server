@@ -1,6 +1,7 @@
 package shu.jee.grandgallery.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import shu.jee.grandgallery.entity.data.PictureInfo;
 import shu.jee.grandgallery.entity.data.RecentVisit;
 import shu.jee.grandgallery.entity.manual.CategoryCnt;
@@ -43,4 +44,6 @@ public interface UserService extends IService<User> {
     boolean addFriend(Integer userId1,Integer userId2);
 
     boolean deleteFriend(Integer userId1,Integer userId2);
+
+    boolean isFriend(Integer userid1,Integer userid2);
 }
